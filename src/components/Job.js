@@ -3,18 +3,22 @@ import Wrapper from "../assets/wrappers/Job";
 import { Link } from "react-router-dom";
 import Button from '../components/Button'
 import customFetch from "../utils/axios";
-const Job = ({name,position,id}) => {
-   const submitDatatoServer = async (id) => {
-     try {
-       const result = await customFetch.delete(`/users/${id}`);
-       return result.data
-     } catch (error) {
-       console.log(error);
-     }
-   };
-  const deleteHandler= async (id)=>{
+import { useEffect } from 'react';
+const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
+  const submitDatatoServer = async (id) => {
+    try {
+      const result = await customFetch.delete(`/users/${id}`);
+      return result.data;
+    } catch (error) {
+      console.log(error);
+    }
+  };
+  const deleteHandler = async (id) => {
     await submitDatatoServer(id);
-  }
+  };
+  useEffect(() => {
+    refetch();
+  }, []);
   return (
     <Wrapper>
       <header>
@@ -40,6 +44,6 @@ const Job = ({name,position,id}) => {
       </footer>
     </Wrapper>
   );
-}
+};
 
 export default Job

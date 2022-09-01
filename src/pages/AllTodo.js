@@ -24,7 +24,13 @@ const AllTodo = () => {
       <div className="jobs">
         {users?.map((user) => {
           console.log(user);
-          return <Job key={user.id} {...user} />;
+          return (
+            <Job
+              key={user.id}
+              {...user}
+              submitDatatoServer={submitDatatoServer}
+            />
+          );
         })}
       </div>
     </Wrapper>
