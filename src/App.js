@@ -1,3 +1,4 @@
+import React from 'react'
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
 import Login from "./pages/Login";
@@ -5,8 +6,8 @@ import AddTodo from "./pages/AddTodo";
 import AllTodo from './pages/AllTodo'
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SharedLayout from './components/sharedLayout'
-import { Sidebar } from "./components";
 function App() {
+  const [user,SetUser]=React.useState('')
   return (
     <BrowserRouter>
       <Routes>
