@@ -16,14 +16,15 @@ const AddTodo = () => {
   };
   const submitDatatoServer= async(data)=>{
     try {
-       const resp = await customFetch.post("/user", data);
-       return resp.data;
+     const result = await customFetch.post("/users", data);
+       return result.data.data;
     } catch (error) {
       console.log(error);
     }
   }
 
   const submitHandler = async (e) => {
+    console.log('values',values);
     e.preventDefault();
    await submitDatatoServer(values);
   };
