@@ -4,9 +4,9 @@ import { Link } from "react-router-dom";
 import Button from '../components/Button'
 import customFetch from "../utils/axios";
 import { useEffect } from 'react';
-const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
+const Job = ({ name, position, id, submitDatatoServer }) => {
   let link = `/edit/${id}`;
-  const submitDatatoServer = async (id) => {
+  const deleteDatatoServer = async (id) => {
     try {
       const result = await customFetch.delete(`/users/${id}`);
       return result.data;
@@ -15,15 +15,15 @@ const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
     }
   };
   const deleteHandler = async (id) => {
-    await submitDatatoServer(id);
+    await deleteDatatoServer(id);
   };
   useEffect(() => {
-    refetch();
-  }, []);
+    submitDatatoServer();
+  }, [deleteHandler]);
   return (
     <Wrapper className="content">
       <header>
-        <div className="main-icon">{name ||'No'}</div>
+        <div className="main-icon">{name.charAt(0) || 'No'}</div>
         <div className="info">
           <p>{name}</p>
           <h5>{position}</h5>

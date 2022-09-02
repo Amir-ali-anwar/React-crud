@@ -1,12 +1,7 @@
 {
   "users": [
     {
-      "name": "Email Template123",
-      "position": "12345",
-      "id": 3
-    },
-    {
-      "name": "Email Template123",
+      "name": "seebiz",
       "position": "12345",
       "id": 4
     },
@@ -14,12 +9,6 @@
       "name": "Email Template123",
       "position": "12345",
       "id": 5
-    },
-    {
-      "name": "admin123",
-      "position": "Front-end developer",
-      "id": 6
     }
-   
   ]
 }
