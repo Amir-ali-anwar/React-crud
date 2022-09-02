@@ -5,6 +5,7 @@ import Button from '../components/Button'
 import customFetch from "../utils/axios";
 import { useEffect } from 'react';
 const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
+  let link = `/edit/${id}`;
   const submitDatatoServer = async (id) => {
     try {
       const result = await customFetch.delete(`/users/${id}`);
@@ -20,9 +21,9 @@ const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
     refetch();
   }, []);
   return (
-    <Wrapper>
+    <Wrapper className="content">
       <header>
-        <div className="main-icon">{name.charAt(0)}</div>
+        <div className="main-icon">{name ||'No'}</div>
         <div className="info">
           <p>{name}</p>
           <h5>{position}</h5>
@@ -30,7 +31,7 @@ const Job = ({ name, position, id, submitDatatoServer:refetch }) => {
       </header>
       <footer>
         <div className="actions">
-          <Link className="btn edit-btn" to="/add-job">
+          <Link className="btn edit-btn" to={link}>
             edit
           </Link>
           <Button

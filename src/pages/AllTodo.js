@@ -23,7 +23,6 @@ const AllTodo = () => {
       </h5>
       <div className="jobs">
         {users?.map((user) => {
-          console.log(user);
           return (
             <Job
               key={user.id}

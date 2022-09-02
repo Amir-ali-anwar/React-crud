@@ -6,12 +6,13 @@ import AddTodo from "./pages/AddTodo";
 import AllTodo from './pages/AllTodo'
 import ProtectedRoute from "./pages/ProtectedRoute";
 import SharedLayout from './components/sharedLayout'
+import  Edit from './pages/Edit'
 function App() {
   const [user,SetUser]=React.useState('')
   return (
     <BrowserRouter>
       <Routes>
-        <Route path="/" element={<Login />}></Route>
+        <Route path="/landing" element={<Login />}></Route>
         <Route
           path="/"
           element={
@@ -20,8 +21,9 @@ function App() {
             </ProtectedRoute>
           }
         >
-          <Route path="/add-Todo" element={<AddTodo />}></Route>
+          <Route index path="/add-Todo" element={<AddTodo />}></Route>
           <Route path="/all-Todo" element={<AllTodo />}></Route>
+          <Route path="/edit/:id" element={<Edit />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>

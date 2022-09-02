@@ -1,7 +1,7 @@
 import React from "react";
 import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { Button, FormRow, Alert } from "../components";
-import AllTodo from './AllTodo'
+import { useParams } from "react-router-dom";
 import customFetch from "../utils/axios";
 const initialState = {
   name: "",
@@ -9,31 +9,42 @@ const initialState = {
 };
 
 const AddTodo = () => {
-  const [values, SetValues] = React.useState(initialState);
+  const { id } = useParams();
+ const [values, SetValues] = React.useState(initialState);
   const inputhandler = (e) => {
     const name = e.target.name;
     const value = e.target.value;
     SetValues({ ...values, [name]: value });
   };
-  const submitDatatoServer= async(data)=>{
+  const submitDatatoServer = async (data) => {
+    // try {
+    //   const result = await customFetch.put("/users",data);
+    //   return result.data;
+    // } catch (error) {
+    //   console.log(error);
+    // }
+  };
+  const fetchUser = async (id)=>{
     try {
-     const result = await customFetch.post("/users", data);
-       return result.data.data;
+       const result = await customFetch.get(`/users/${id}`);
+      SetValues(result.data);
     } catch (error) {
       console.log(error);
     }
   }
-
+  React.useEffect(()=>{
+    fetchUser(id);
+  },[])
   const submitHandler = async (e) => {
-    console.log('values',values);
+    console.log("values", values);
     e.preventDefault();
-   await submitDatatoServer(values);
+    await submitDatatoServer(values);
   };
   return (
     <>
       <Wrapper>
         <form className="form" onSubmit={submitHandler}>
-          <h3>Add user</h3>
+          <h3>edit user {` ${id} `}</h3>
           <div className="form-center">
             <FormRow
               name="name"
@@ -53,7 +64,7 @@ const AddTodo = () => {
             />
             <div className="btn-container">
               <Button type="submit" className="btn btn-block submit-btn">
-                Submit
+                Update
               </Button>
             </div>
           </div>
