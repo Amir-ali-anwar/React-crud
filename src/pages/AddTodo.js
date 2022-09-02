@@ -3,12 +3,14 @@ import Wrapper from "../assets/wrappers/DashboardFormPage";
 import { Button, FormRow, Alert } from "../components";
 import AllTodo from './AllTodo'
 import customFetch from "../utils/axios";
+import { useNavigate } from "react-router-dom";
 const initialState = {
   name: "",
   position: "",
 };
 
 const AddTodo = () => {
+    const navigate = useNavigate();
   const [values, SetValues] = React.useState(initialState);
   const inputhandler = (e) => {
     const name = e.target.name;
@@ -28,6 +30,7 @@ const AddTodo = () => {
     console.log('values',values);
     e.preventDefault();
    await submitDatatoServer(values);
+   navigate("/all-Todo");
   };
   return (
     <>
