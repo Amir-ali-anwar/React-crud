@@ -1,11 +1,6 @@
 {
   "users": [
     {
-      "name": "seebiz",
-      "position": "12345",
-      "id": 4
-    },
-    {
       "name": "Email Template123",
       "position": "12345",
       "id": 5
@@ -19,6 +14,26 @@
       "name": "fsadfsafd",
       "position": "Full stack developer 123",
       "id": 7
+    },
+    {
+      "name": "Mubasher akram",
+      "position": "Front-end developer",
+      "id": 8
+    },
+    {
+      "name": "Sir Farhan",
+      "position": "Mern, Vue, Laravel",
+      "id": 9
+    },
+    {
+      "name": "amir",
+      "position": "Front-end developer",
+      "id": 10
+    },
+    {
+      "name": "Anas",
+      "position": "Principle software engineer",
+      "id": 11
     }
   ]
 }

@@ -1,14 +1,9 @@
 import React from 'react'
 import "./App.css";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
-import Login from "./pages/Login";
-import AddTodo from "./pages/AddTodo";
-import AllTodo from './pages/AllTodo'
-import ProtectedRoute from "./pages/ProtectedRoute";
-import SharedLayout from './components/sharedLayout'
-import  Edit from './pages/Edit'
+import SharedLayout from 'components/sharedLayout'
+import {AllTodo, AddTodo, Edit, Error, Login, ProtectedRoute} from 'pages'
 function App() {
-  const [user,SetUser]=React.useState('')
   return (
     <BrowserRouter>
       <Routes>
@@ -24,6 +19,7 @@ function App() {
           <Route index path="/add-Todo" element={<AddTodo />}></Route>
           <Route path="/all-Todo" element={<AllTodo />}></Route>
           <Route path="/edit/:id" element={<Edit />}></Route>
+          <Route path="*" element={<Error />}></Route>
         </Route>
       </Routes>
     </BrowserRouter>
